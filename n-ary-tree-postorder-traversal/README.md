@@ -43,5 +43,7 @@ class Solution:
                 for i in range(children - 1, -1, -1):
                     stack.append([curr.children[i], False])
         return postorder_traversal
-	</p>
+  
+ </strong>	
+</p>
 </div>
