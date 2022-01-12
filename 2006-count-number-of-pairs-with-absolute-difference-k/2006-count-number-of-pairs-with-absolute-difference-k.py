@@ -1,9 +1,14 @@
 class Solution:
     def countKDifference(self, nums: List[int], k: int) -> int:
-        count = 0
-        for i in range(len(nums) - 1):
-            for j in range(i+1, len(nums)):
-                if abs(nums[i] - nums[j]) == k:
-                    count +=1
-        return count
+        n = len(nums)
+        h = defaultdict(int)
+        h[nums[0]] += 1
+        
+        res = 0 
+        for i in range(1, n):
+            res += h[nums[i]+k] + h[nums[i]-k]
+            h[nums[i]] += 1
+        
+        print(h)
+        return res
             
