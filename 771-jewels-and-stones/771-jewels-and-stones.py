@@ -1,9 +1,7 @@
 class Solution:
     def numJewelsInStones(self, jewels: str, stones: str) -> int:
-        list1= []
-        list2= []
-        list1[:0]=jewels
-        list2[:0]=stones
+        list1=list(jewels)
+        list2=list(stones)
         count = 0
         for i in list2:
             if i in list1:
