@@ -8,17 +8,15 @@ class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         self.result =[]
         def smalles_val(root):
-            if root is None:
-                return None
-            else:
-                self.result.append(root.val)
+
             if root.left:
                 smalles_val(root.left)
+            if root is not None:
+                self.result.append(root.val)
             if root.right:
                 smalles_val(root.right)
         
         smalles_val(root)
-        self.result.sort()
         return self.result[k-1]    
                 
         
