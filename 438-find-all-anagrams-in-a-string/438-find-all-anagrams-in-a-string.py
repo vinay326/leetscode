@@ -18,7 +18,9 @@ class Solution:
                 matched += 1
 
             if matched == len(char_frequency):
-              x.append(window_start)
+                print(len(p))
+                print(char_frequency)
+                x.append(window_start)
 
             # shrink the window by one character
             if window_end >= len(p) - 1:
