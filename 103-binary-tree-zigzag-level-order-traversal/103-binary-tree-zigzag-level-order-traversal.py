@@ -4,29 +4,28 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+from collections import deque
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        result = []
         if root is None:
-            return result
-        q = []
-        q.append(root)
-        depth = 0
-        direction = "right"
-        while len(q) > 0:
-            depth += 1
-            level = len(q)
-            curr_level = []
-            for i in range(level):
-                curr_node = q.pop(0)
-                curr_level.append(curr_node.val)
-     
-                if curr_node.left:
-                    q.append(curr_node.left)
-                if curr_node.right:
-                    q.append(curr_node.right)               
-            if depth % 2 == 0:
-                curr_level = curr_level[::-1]
-            result.append(curr_level)
-        return result
-    
+            return []
+
+        results = []
+        def dfs(node, level):
+            if level >= len(results):
+                results.append(deque([node.val]))
+            else:
+                if level % 2 == 0:
+                    results[level].append(node.val)
+                else:
+                    results[level].appendleft(node.val)
+
+            for next_node in [node.left, node.right]:
+                if next_node is not None:
+                    dfs(next_node, level+1)
+
+        # normal level order traversal with DFS
+        dfs(root, 0)
+
+        return results        
