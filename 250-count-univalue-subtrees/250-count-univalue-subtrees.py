@@ -11,7 +11,7 @@ class Solution:
             
         def helper(node):
             nonlocal count
-            if root.left == None and root.right == None:
+            if node.left == None and node.right == None:
                 count +=1
                 return True
             isUnivalue =  True
