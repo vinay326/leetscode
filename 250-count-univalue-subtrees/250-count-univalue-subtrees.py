@@ -25,7 +25,7 @@ class Solution:
                 
             if univalue:
                 count +=1
-                return univalue
+            return univalue
             
         count = 0
         helper(root)
