@@ -7,27 +7,26 @@
 class Solution:
     def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
         if root is None:
-                return 0
-            
+            return 0
         def helper(node):
             nonlocal count
-            if node.left == None and node.right == None:
+            if node.left is None and node.right is None:
                 count +=1
                 return True
-            isUnivalue =  True
             
+            
+            univalue =True
             if node.left:
-                left = helper(node.left)
-                isUnivalue = left and isUnivalue and node.val == node.left.val
-            
+                left=helper(node.left)
+                univalue = left and univalue and node.left and node.val == node.left.val
             if node.right:
-                right = helper(node.right)
-                isUnivalue = right and isUnivalue and node.val == node.right.val
-            
-            if isUnivalue:
+                right=helper(node.right)
+                univalue = right and univalue and node.right and node.val == node.right.val
+                
+            if univalue:
                 count +=1
-                return isUnivalue
-        count = 0   
+                return univalue
+            
+        count = 0
         helper(root)
         return count
-        
